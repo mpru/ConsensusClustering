@@ -1,0 +1,50 @@
+#' ConsensusClustering Package
+#' 
+#' Consensus Clustering is a revised tool for implementing the methodology for class discovery and clustering validation, based off of 2003 Monti's paper. 
+#' This method is used to find a consensus assignment across multiple runs of a clustering approach, allowing one to assess and 
+#' validate the stability of the discovered clusters empirically. The objective of this method is to identify robust clusters
+#'  in the context of genomic data, but is applicable for any unsupervised learning task.
+#' 
+#' This package was inspired by an existing package that addresses the same methodology by Wilerson (2010), \href{https://www.bioconductor.org/packages/release/bioc/html/ConsensusClusterPlus.html}{ConsensusClusterPlus}, 
+#' but improving the implementation of the method in the following aspects:
+#' \itemize{
+#'   \item \strong{Implementation of parallelization}: Our package let the user take advantage of multiple cores or the power of computational
+#'    clusters to perform the bootstrap iterations in a faster way.
+#'   \item \strong{Improved use of data structures}: In order to have better memory efficiency, we replaced all symmetric consensus matrices
+#'    between pairs of samples with consensus vectors which store the same data in smaller structures.
+#'   \item \strong{User-friendly source code}: Our code was developed following good-practice style, with descriptive variable names and a 
+#'   clear separation of the different tasks. These characteristics, missing in the previous ConsensusClusterPlus package, contribute to 
+#'   maintainability, understandability, reuseability, debugability and extensibility of the code.
+#'   \item \strong{Functions for analysis of the results that can be called later independently of the main function}: All the diagnosis 
+#'   plots for assesment of optimal value of K, as well as the calculation of consensus statistics, can be obtained in the main execution of the
+#'   \code{consensusClustering} function but can also be disabled and run individually later calling the respective functions with \code{consensusClustering}
+#'   results as input. This allows the user to choose whether to spend time and computational resources in these tasks or not.
+#'   \item \strong{More flexible options for plots}: Heatmaps for big data sets can run into computational problems when they try to plot deep dendrograms
+#'   or visualization issues when annotating samples and features names. We made these characteristics available to be defined by the user.
+#'   \item \strong{Implementation of PAC scores}: Our package adds one extra measure to asses the optimal number of K, the Proportion of Ambiguously Clustering (PAC score, Senbabaoglu, 2014).
+#'   \item \strong{Intra and Inter Cluster Consensus summary}: Our package returns single intra and inter cluster consensus coefficients 
+#'   for each value of K evaluated, allowing easy comparison.
+#'   \item \strong{Analysis is performed for any desired values of K}: In our package the user can provide a vector with the desired values of K
+#'   to evaluate (for example, \code{K = 4}, \code{K = 2:5}, \code{K = c(5, 10, 15)}), while in Wilkerson's package the analysis had to be 
+#'   performed for all values between 2 and K, being K defined by the user.
+#'   \item \strong{Plots implemented with \code{ggplot2} and \code{ComplexHeatmap} packages}: resulting in plots with nice appeareance.
+#' }
+#' 
+#' @note This first version of our package only handles Kmeans as the clustering algorithm. Wilkersons's ConsensusClusterPlus package 
+#' provides a wide range of other options.
+#'
+#' @author Jessica Soto and Marcos Prunello 
+#' 
+#' @seealso \code{\link{consensusClustering}}
+#' @seealso \code{\link{PlotHeatmaps}}
+#' @seealso \code{\link{PlotCDF}}
+#' @seealso \code{\link{PlotTracking}}
+#' @seealso \code{\link{ConsensusStatsAndPlots}}
+#' 
+#' @references Monti, S et al (2003) Consensus Clustering: A Resampling-Based Method for Class Discovery and Visualization of Gene Expression Microarray Data. \emph{Machine Learning}, \strong{52}, 91-118.
+#' @references Wilkerson M and Hayes D (2010) ConsensusClusterPlus: a class discovery tool with confidence assessments and item tracking. \emph{Bioinformatics}, \strong{26}, 1572-1573.
+#' @references Senbabaoglu, Y et al (2014) Critical limitations of consensus clustering in class discovery. \emph{Scientific Reports}, \strong{4}, Article number 6207.
+#' @docType package
+#' @name ConsensusClustering-package
+#' @keywords robust_clustering consensus unsupervised_learning class_discovery
+NULL

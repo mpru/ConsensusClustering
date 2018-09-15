@@ -1,0 +1,34 @@
+Package: ConsensusClustering
+Title: An R Package for Consensus Clustering
+Version: 1.0.0
+Authors@R: c(
+    person("Marcos", "Prunello", email = "marcosprunello@gmail.com", role = c("aut", "cre")), 
+    person("Jessica", "Soto", email = "jntorres@stanford.edu", role = "aut"))
+Description: Consensus Clustering is a revised tool for implementing the
+    methodology for class discovery and clustering validation, based off of 2003
+    Monti's paper. This method is used to find a consensus assignment across
+    multiple runs of a clustering approach, allowing one to assess and validate the
+    stability of the discovered clusters empirically. The objective of this method
+    is to identify robust clusters in the context of genomic data, but is applicable
+    for any unsupervised learning task.
+Depends:
+    R (>= 3.2.3)
+License: GPL-2
+LazyData: true
+Type: Package
+Date: 2016-03-15
+Imports:
+    foreach,
+    circlize,
+    ComplexHeatmap,
+    grid,
+    tidyr,
+    ggplot2,
+    doRNG
+Suggests:
+    doParallel,
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
